@@ -1,0 +1,8 @@
+{
+	"etherscanroot": "http://testnet.etherscan.io/address/",
+	"payoutfrequencyinsec": 60,
+	"payoutamountinether": 0.1,
+	"queuesize": 5,
+	"walletpwd": "test",
+	"httpport": 3000	
+}
