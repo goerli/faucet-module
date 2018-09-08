@@ -9,11 +9,13 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cors": "2.7.1",
+    "dotenv": "^6.0.0",
     "ethers": "^3.0.0",
-    "express": "4.13.4",
+    "express": "^4.16.3",
     "level": "^3.0.0",
-    "lodash": "4.11.1",
+    "lodash": "^4.17.10",
     "mkdirp": "^0.5.1",
+    "node-gitter": "^2.1.0",
     "nodemon": "^1.18.4"
   },
   "author": "",
