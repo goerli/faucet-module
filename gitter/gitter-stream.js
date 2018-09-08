@@ -1,14 +1,17 @@
 var Gitter = require('node-gitter');
 require('dotenv').config()
-
-var roomId    = process.env.ROOM_ID;
-var token     = process.env.GITTER_TOKENS;
+const roomId = process.env.ROOM_ID;
+const token  = process.env.GITTER_TOKENS;
 let gitter;
+const server = require('../server/index');
 
 const setup = async () => {
+    server.connect();
     gitter = new Gitter(token);
     const user = await gitter.currentUser();
     console.log("logged in as " + user.username);
+    const faucetBalance = await server.getFaucetBalance();
+    await server.getTxCount()
 }
 
 const connectToRoom = async () => {
@@ -19,9 +22,13 @@ const connectToRoom = async () => {
           console.log(snapshot.length + ' messages in the snapshot');
         }); 
         // The 'chatMessages' event is emitted on each new message
-        events.on('chatMessages', function(message) {
+        events.on('chatMessages', async function(message) {
           console.log('A message was ' + message.operation);
           console.log('Text: ', message.model.text);
+          //check map
+          const faucetBalancePRE = await server.getFaucetBalance();
+          const response = await server.sendTestEth(message.model.text)
+          const faucetBalance = await server.getFaucetBalance();
         });
     });
 }
