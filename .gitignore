@@ -15,7 +15,7 @@ buck-out/
 \.buckd/
 *.keystore
 
-
+.idea
 # Bundle artifact
 *.jsbundle
 
